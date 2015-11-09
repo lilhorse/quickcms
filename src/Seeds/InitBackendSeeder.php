@@ -37,45 +37,45 @@ class InitBackendSeeder extends Seeder
                 'name' => 'admin.index', 'display_name' => '欢迎页', 'parent_id' => '0',
                 'level' => 1, 'icon' => 'fa-home', 'route' => '/admin/index', 'sort' => 1,
             ],
-            [
-                'name' => 'admin.dashboard', 'display_name' => '数据面板', 'parent_id' => '0',
-                'level' => 1, 'icon' => 'fa-dashboard', 'route' => '/admin/dashboard', 'sort' => 2,
-            ],
+//            [
+//                'name' => 'admin.dashboard', 'display_name' => '数据面板', 'parent_id' => '0',
+//                'level' => 1, 'icon' => 'fa-dashboard', 'route' => '/admin/dashboard', 'sort' => 2,
+//            ],
             [
                 'name' => 'system', 'display_name' => '系统管理', 'parent_id' => '0',
-                'level' => 1, 'icon' => 'fa-puzzle-piece', 'route' => '#', 'sort' => 3,
+                'level' => 1, 'icon' => 'fa-puzzle-piece', 'route' => '#', 'sort' => 2,
             ],
             [
                 'name' => 'maintenance', 'display_name' => '运维管理', 'parent_id' => '0',
-                'level' => 1, 'icon' => 'fa-desktop', 'route' => '#', 'sort' => 4,
+                'level' => 1, 'icon' => 'fa-desktop', 'route' => '#', 'sort' => 3,
             ],
             [
-                'name' => 'admin.users', 'display_name' => '用户管理', 'parent_id' => '3',
+                'name' => 'admin.users', 'display_name' => '用户管理', 'parent_id' => '2',
                 'level' => 2, 'icon' => '', 'route' => '/admin/users', 'sort' => 1,
             ],
             [
-                'name' => 'admin.permissions', 'display_name' => '权限管理', 'parent_id' => '3',
+                'name' => 'admin.permissions', 'display_name' => '权限管理', 'parent_id' => '2',
                 'level' => 2, 'icon' => '', 'route' => '/admin/permissions', 'sort' => 2,
             ],
             [
-                'name' => 'admin.roles', 'display_name' => '角色管理', 'parent_id' => '3',
+                'name' => 'admin.roles', 'display_name' => '角色管理', 'parent_id' => '2',
                 'level' => 2, 'icon' => '', 'route' => '/admin/roles', 'sort' => 3,
             ],
+//            [
+//                'name' => 'admin.logs', 'display_name' => '操作日志', 'parent_id' => '3',
+//                'level' => 2, 'icon' => '', 'route' => '/admin/logs', 'sort' => 1,
+//            ],
             [
-                'name' => 'admin.logs', 'display_name' => '操作日志', 'parent_id' => '4',
-                'level' => 2, 'icon' => '', 'route' => '/admin/logs', 'sort' => 1,
+                'name' => 'admin.feedbacks', 'display_name' => '意见反馈', 'parent_id' => '3',
+                'level' => 2, 'icon' => '', 'route' => '/admin/feedbacks', 'sort' => 1,
             ],
             [
-                'name' => 'admin.feedbacks', 'display_name' => '意见反馈', 'parent_id' => '4',
-                'level' => 2, 'icon' => '', 'route' => '/admin/feedbacks', 'sort' => 2,
+                'name' => 'admin.versions', 'display_name' => '版本管理', 'parent_id' => '3',
+                'level' => 2, 'icon' => '', 'route' => '/admin/versions', 'sort' => 2,
             ],
             [
-                'name' => 'admin.versions', 'display_name' => '版本管理', 'parent_id' => '4',
-                'level' => 2, 'icon' => '', 'route' => '/admin/versions', 'sort' => 3,
-            ],
-            [
-                'name' => 'admin.system', 'display_name' => '系统设置', 'parent_id' => '4',
-                'level' => 2, 'icon' => '', 'route' => '/admin/systems', 'sort' => 4,
+                'name' => 'admin.system', 'display_name' => '系统设置', 'parent_id' => '3',
+                'level' => 2, 'icon' => '', 'route' => '/admin/systems', 'sort' => 3,
             ]
         );
         DB::table('permissions')->insert($permissions);
