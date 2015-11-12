@@ -81,7 +81,7 @@ class InitBackendSeeder extends Seeder
         DB::table('permissions')->insert($permissions);
 
         $permission_role = array();
-        foreach(range(0, 10) as $index) {
+        foreach(range(0, 8) as $index) {
             $permission_role[] = ['permission_id' => $index + 1, 'role_id' => 1];
         }
         DB::table('permission_role')->insert($permission_role);
