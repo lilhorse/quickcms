@@ -76,6 +76,10 @@ class InitBackendSeeder extends Seeder
             [
                 'name' => 'admin.system', 'display_name' => '系统设置', 'parent_id' => '3',
                 'level' => 2, 'icon' => '', 'route' => '/admin/systems', 'sort' => 3,
+            ],
+            [
+                'name' => 'admin.logs', 'display_name' => '查看日志', 'parent_id' => '2',
+                'level' => 2, 'icon' => '', 'route' => '/logs', 'sort' => 4,
             ]
         );
         DB::table('permissions')->insert($permissions);
