@@ -15,9 +15,9 @@ class InitBackendSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'YongBin Deng',
-            'email' => 'dengyongbin@loopeer.com',
-            'password' => sha1('111111'),
+            'name' => 'bd',
+            'email' => 'bd@loopeer.com',
+            'password' => sha1('bd@loopeer'),
             'status' => 1,
         ]);
 
@@ -61,10 +61,10 @@ class InitBackendSeeder extends Seeder
                 'name' => 'admin.roles', 'display_name' => '角色管理', 'parent_id' => '2',
                 'level' => 2, 'icon' => '', 'route' => '/admin/roles', 'sort' => 3,
             ],
-//            [
-//                'name' => 'admin.logs', 'display_name' => '操作日志', 'parent_id' => '3',
-//                'level' => 2, 'icon' => '', 'route' => '/admin/logs', 'sort' => 1,
-//            ],
+            [
+                'name' => 'admin.logs', 'display_name' => '操作日志', 'parent_id' => '3',
+                'level' => 2, 'icon' => '', 'route' => '/admin/logs', 'sort' => 1,
+            ],
             [
                 'name' => 'admin.feedbacks', 'display_name' => '意见反馈', 'parent_id' => '3',
                 'level' => 2, 'icon' => '', 'route' => '/admin/feedbacks', 'sort' => 1,
