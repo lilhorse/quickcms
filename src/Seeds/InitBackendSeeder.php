@@ -37,14 +37,6 @@ class InitBackendSeeder extends Seeder
                 'name' => 'admin.index', 'display_name' => '欢迎页', 'parent_id' => '0',
                 'level' => 1, 'icon' => 'fa-home', 'route' => '/admin/index', 'sort' => 1,
             ],
-//            [
-//                'name' => 'admin.dashboard', 'display_name' => '数据面板', 'parent_id' => '0',
-//                'level' => 1, 'icon' => 'fa-dashboard', 'route' => '/admin/dashboard', 'sort' => 2,
-//            ],
-            [
-                'name' => 'system', 'display_name' => '系统管理', 'parent_id' => '0',
-                'level' => 1, 'icon' => 'fa-puzzle-piece', 'route' => '#', 'sort' => 2,
-            ],
             [
                 'name' => 'maintenance', 'display_name' => '运维管理', 'parent_id' => '0',
                 'level' => 1, 'icon' => 'fa-desktop', 'route' => '#', 'sort' => 3,
