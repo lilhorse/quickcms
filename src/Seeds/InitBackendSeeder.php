@@ -38,6 +38,10 @@ class InitBackendSeeder extends Seeder
                 'level' => 1, 'icon' => 'fa-home', 'route' => '/admin/index', 'sort' => 1,
             ],
             [
+                'name' => 'system', 'display_name' => '系统管理', 'parent_id' => '0',
+                'level' => 1, 'icon' => 'fa-puzzle-piece', 'route' => '#', 'sort' => 2,
+            ],
+            [
                 'name' => 'maintenance', 'display_name' => '运维管理', 'parent_id' => '0',
                 'level' => 1, 'icon' => 'fa-desktop', 'route' => '#', 'sort' => 3,
             ],
@@ -52,10 +56,6 @@ class InitBackendSeeder extends Seeder
             [
                 'name' => 'admin.roles', 'display_name' => '角色管理', 'parent_id' => '2',
                 'level' => 2, 'icon' => '', 'route' => '/admin/roles', 'sort' => 3,
-            ],
-            [
-                'name' => 'admin.logs', 'display_name' => '操作日志', 'parent_id' => '3',
-                'level' => 2, 'icon' => '', 'route' => '/admin/logs', 'sort' => 1,
             ],
             [
                 'name' => 'admin.feedbacks', 'display_name' => '意见反馈', 'parent_id' => '3',
