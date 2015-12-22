@@ -46,6 +46,10 @@ class InitBackendSeeder extends Seeder
                 'level' => 1, 'icon' => 'fa-desktop', 'route' => '#', 'sort' => 3,
             ],
             [
+                'name' => 'develop', 'display_name' => '开发工具', 'parent_id' => '0',
+                'level' => 1, 'icon' => 'fa-desktop', 'route' => '#', 'sort' => 3,
+            ],
+            [
                 'name' => 'admin.users', 'display_name' => '用户管理', 'parent_id' => '2',
                 'level' => 2, 'icon' => '', 'route' => '/admin/users', 'sort' => 1,
             ],
@@ -70,14 +74,18 @@ class InitBackendSeeder extends Seeder
                 'level' => 2, 'icon' => '', 'route' => '/admin/systems', 'sort' => 3,
             ],
             [
-                'name' => 'admin.logs', 'display_name' => '查看日志', 'parent_id' => '2',
+                'name' => 'admin.logs', 'display_name' => '查看日志', 'parent_id' => '4',
                 'level' => 2, 'icon' => '', 'route' => '/logs', 'sort' => 4,
+            ],
+            [
+                'name' => 'admin.selector', 'display_name' => '下拉枚举管理', 'parent_id' => '4',
+                'level' => 2, 'icon' => '', 'route' => '/admin/selector', 'sort' => 4,
             ]
         );
         DB::table('permissions')->insert($permissions);
 
         $permission_role = array();
-        foreach(range(0, 9) as $index) {
+        foreach(range(0, 11) as $index) {
             $permission_role[] = ['permission_id' => $index + 1, 'role_id' => 1];
         }
         DB::table('permission_role')->insert($permission_role);
