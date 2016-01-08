@@ -89,7 +89,14 @@ class InitBackendSeeder extends Seeder
             ]
         );
         DB::table('permissions')->insert($permissions);
-
+        $selectors = [
+            'id'=>1,
+            'name'=>'父级权限',
+            'enum_key'=>'parent_permissions',
+            'type'=>0,
+            'enum_value'=>"select id,display_name from permissions where parent_id=0"
+        ];
+        DB::table('selectors')->insert($selectors);
         $permission_role = array();
         foreach(range(0, 11) as $index) {
             $permission_role[] = ['permission_id' => $index + 1, 'role_id' => 1];
