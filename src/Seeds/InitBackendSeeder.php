@@ -89,7 +89,7 @@ class InitBackendSeeder extends Seeder
             ],
             [
                 'name' => 'admin.develop.null', 'display_name' => '无', 'parent_id' => '0',
-                'level' => 0, 'icon' => '', 'route' => '#', 'sort' => 0,
+                'level' => 0, 'icon' => '', 'route' => '#', 'sort' => 0,'description'=>'系统使用，不允许删除'
             ]
         );
         DB::table('permissions')->insert($permissions);
