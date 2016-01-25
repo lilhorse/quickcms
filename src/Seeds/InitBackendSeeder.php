@@ -44,8 +44,8 @@ class InitBackendSeeder extends Seeder
                 'level' => 1, 'icon' => 'fa-home', 'route' => '/admin/index', 'sort' => 1,
             ],
             [
-                'name' => 'system', 'display_name' => '系统管理', 'parent_id' => '0',
-                'level' => 1, 'icon' => 'fa-puzzle-piece', 'route' => '#', 'sort' => 2,
+                'name' => 'system', 'display_name' => '权限管理', 'parent_id' => '0',
+                'level' => 1, 'icon' => 'fa-group', 'route' => '#', 'sort' => 2,
             ],
             [
                 'name' => 'maintenance', 'display_name' => '运维管理', 'parent_id' => '0',
@@ -53,7 +53,7 @@ class InitBackendSeeder extends Seeder
             ],
             [
                 'name' => 'develop', 'display_name' => '开发工具', 'parent_id' => '0',
-                'level' => 1, 'icon' => 'fa-desktop', 'route' => '#', 'sort' => 3,
+                'level' => 1, 'icon' => 'fa-wrench', 'route' => '#', 'sort' => 4,
             ],
             [
                 'name' => 'admin.users', 'display_name' => '用户管理', 'parent_id' => '2',
@@ -80,12 +80,20 @@ class InitBackendSeeder extends Seeder
                 'level' => 2, 'icon' => '', 'route' => '/admin/systems', 'sort' => 3,
             ],
             [
+                'name' => 'admin.statistics', 'display_name' => '统计分析', 'parent_id' => '3',
+                'level' => 2, 'icon' => '', 'route' => '/admin/statistics', 'sort' => 4,
+            ],
+            [
+                'name' => 'admin.documents', 'display_name' => '文档管理', 'parent_id' => '3',
+                'level' => 2, 'icon' => '', 'route' => '/admin/documents', 'sort' => 5,
+            ],
+            [
                 'name' => 'admin.logs', 'display_name' => '查看日志', 'parent_id' => '4',
-                'level' => 2, 'icon' => '', 'route' => '/logs', 'sort' => 4,
+                'level' => 2, 'icon' => '', 'route' => '/logs', 'sort' => 1,
             ],
             [
                 'name' => 'admin.selector', 'display_name' => '下拉枚举管理', 'parent_id' => '4',
-                'level' => 2, 'icon' => '', 'route' => '/admin/selector', 'sort' => 4,
+                'level' => 2, 'icon' => '', 'route' => '/admin/selector', 'sort' => 2,
             ]
         );
         DB::table('permissions')->insert($permissions);
@@ -98,7 +106,7 @@ class InitBackendSeeder extends Seeder
         ];
         DB::table('selectors')->insert($selectors);
         $permission_role = array();
-        foreach(range(0, 11) as $index) {
+        foreach(range(0, count($permissions) - 1) as $index) {
             $permission_role[] = ['permission_id' => $index + 1, 'role_id' => 1];
         }
         DB::table('permission_role')->insert($permission_role);
