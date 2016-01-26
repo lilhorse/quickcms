@@ -4,6 +4,7 @@ namespace Loopeer\QuickCms\Seeds;
 
 use DB;
 use Illuminate\Database\Seeder;
+use Loopeer\QuickCms\Models\System;
 
 class InitBackendSeeder extends Seeder
 {
@@ -76,7 +77,7 @@ class InitBackendSeeder extends Seeder
                 'level' => 2, 'icon' => '', 'route' => '/admin/versions', 'sort' => 2,
             ],
             [
-                'name' => 'admin.system', 'display_name' => '系统设置', 'parent_id' => '3',
+                'name' => 'admin.systems', 'display_name' => '系统设置', 'parent_id' => '3',
                 'level' => 2, 'icon' => '', 'route' => '/admin/systems', 'sort' => 3,
             ],
             [
@@ -114,5 +115,18 @@ class InitBackendSeeder extends Seeder
             $permission_role[] = ['permission_id' => $index + 1, 'role_id' => 1];
         }
         DB::table('permission_role')->insert($permission_role);
+
+        $system_keys = ['title', 'build', 'app_review', 'android_download'];
+        $system_values = ['后台管理系统', '10000', 'false', 'fir.im'];
+        $system_descriptions = ['网站标题', '版本号', '版本审核状态', '安卓apk下载链接'];
+        $systems = array();
+        foreach($system_keys as $key => $value) {
+            $systems[] = array(
+                'system_key' => $value,
+                'system_value' => $system_values[$key],
+                'description' => $system_descriptions[$key]
+            );
+        }
+        DB::table('systems')->insert($systems);
     }
 }
