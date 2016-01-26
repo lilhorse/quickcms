@@ -88,6 +88,10 @@ class InitBackendSeeder extends Seeder
                 'level' => 2, 'icon' => '', 'route' => '/admin/documents', 'sort' => 5,
             ],
             [
+                'name' => 'admin.pushes', 'display_name' => '推送管理', 'parent_id' => '3',
+                'level' => 2, 'icon' => '', 'route' => '/admin/pushes', 'sort' => 6,
+            ],
+            [
                 'name' => 'admin.logs', 'display_name' => '查看日志', 'parent_id' => '4',
                 'level' => 2, 'icon' => '', 'route' => '/logs', 'sort' => 1,
             ],
