@@ -81,11 +81,11 @@ class InitBackendSeeder extends Seeder
                 'level' => 2, 'icon' => '', 'route' => '/admin/systems', 'sort' => 3,
             ],
             [
-                'name' => 'admin.statistics', 'display_name' => '统计分析', 'parent_id' => '3',
-                'level' => 2, 'icon' => '', 'route' => '/admin/statistics', 'sort' => 4,
+                'name' => 'admin.statistics.index', 'display_name' => '统计分析', 'parent_id' => '3',
+                'level' => 2, 'icon' => '', 'route' => '/admin/statistics/index', 'sort' => 4,
             ],
             [
-                'name' => 'admin.document', 'display_name' => '文档管理', 'parent_id' => '3',
+                'name' => 'admin.documents', 'display_name' => '文档管理', 'parent_id' => '3',
                 'level' => 2, 'icon' => '', 'route' => '/admin/documents', 'sort' => 5,
             ],
             [
