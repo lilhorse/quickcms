@@ -85,8 +85,8 @@ class InitBackendSeeder extends Seeder
                 'level' => 2, 'icon' => '', 'route' => '/admin/statistics/index', 'sort' => 4,
             ],
             [
-                'name' => 'admin.documents', 'display_name' => '文档管理', 'parent_id' => '3',
-                'level' => 2, 'icon' => '', 'route' => '/admin/documents', 'sort' => 5,
+                'name' => 'admin.document', 'display_name' => '文档管理', 'parent_id' => '3',
+                'level' => 2, 'icon' => '', 'route' => '/admin/document', 'sort' => 5,
             ],
             [
                 'name' => 'admin.pushes', 'display_name' => '推送管理', 'parent_id' => '3',
@@ -94,30 +94,26 @@ class InitBackendSeeder extends Seeder
             ],
             [
                 'name' => 'admin.logs', 'display_name' => '查看日志', 'parent_id' => '4',
-                'level' => 2, 'icon' => '', 'route' => '/logs', 'sort' => 1,
+                'level' => 2, 'icon' => '', 'route' => '/admin/logs', 'sort' => 1,
+            ],
+            [
+                'name' => 'admin.actionLogs', 'display_name' => '后台日志管理', 'parent_id' => '4',
+                'level' => 2, 'icon' => '', 'route' => '/admin/actionLogs', 'sort' => 2,
             ],
             [
                 'name' => 'admin.selector', 'display_name' => '下拉枚举管理', 'parent_id' => '4',
-                'level' => 2, 'icon' => '', 'route' => '/admin/selector', 'sort' => 2,
+                'level' => 2, 'icon' => '', 'route' => '/admin/selector', 'sort' => 3,
             ]
         );
         DB::table('permissions')->insert($permissions);
-//        $selectors = [
-//            'id'=>1,
-//            'name'=>'父级权限',
-//            'enum_key'=>'parent_permissions',
-//            'type'=>0,
-//            'enum_value'=>"select id,display_name from permissions where parent_id=0"
-//        ];
-//        DB::table('selectors')->insert($selectors);
         $permission_role = array();
         foreach(range(0, count($permissions) - 1) as $index) {
             $permission_role[] = ['permission_id' => $index + 1, 'role_id' => 1];
         }
         DB::table('permission_role')->insert($permission_role);
 
-        $system_keys = ['title', 'build', 'app_review', 'android_download'];
-        $system_values = ['后台管理系统', '10000', 'false', 'fir.im'];
+        $system_keys = ['build', 'app_review', 'android_download'];
+        $system_values = ['10000', 'false', 'fir.im'];
         $system_descriptions = ['网站标题', '版本号', '版本审核状态', '安卓apk下载链接'];
         $systems = array();
         foreach($system_keys as $key => $value) {
