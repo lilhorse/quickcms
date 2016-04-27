@@ -4,6 +4,7 @@ namespace Loopeer\QuickCms\Seeds;
 
 use DB;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use Loopeer\QuickCms\Models\System;
 
 class InitBackendSeeder extends Seeder
@@ -24,7 +25,7 @@ class InitBackendSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'bd',
             'email' => 'bd@loopeer.com',
-            'password' => sha1('bd@loopeer'),
+            'password' => Hash::make('bd@loopeer'),
             'status' => 1,
         ]);
 
