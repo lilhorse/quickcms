@@ -58,6 +58,10 @@ class InitBackendSeeder extends Seeder
                 'level' => 1, 'icon' => 'fa-wrench', 'route' => '#', 'sort' => 4,
             ],
             [
+                'name' => 'email', 'display_name' => '邮件管理', 'parent_id' => '0',
+                'level' => 1, 'icon' => 'fa-envelope', 'route' => '#', 'sort' => 5,
+            ],
+            [
                 'name' => 'admin.users', 'display_name' => '用户管理', 'parent_id' => '2',
                 'level' => 2, 'icon' => '', 'route' => '/admin/users', 'sort' => 1,
             ],
@@ -104,6 +108,10 @@ class InitBackendSeeder extends Seeder
             [
                 'name' => 'admin.selector', 'display_name' => '下拉枚举管理', 'parent_id' => '4',
                 'level' => 2, 'icon' => '', 'route' => '/admin/selector', 'sort' => 3,
+            ],
+            [
+                'name' => 'admin.sendcloud', 'display_name' => 'SendCloud', 'parent_id' => '5',
+                'level' => 2, 'icon' => '', 'route' => '/admin/sendcloud', 'sort' => 1,
             ]
         );
         DB::table('permissions')->insert($permissions);
