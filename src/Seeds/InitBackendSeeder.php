@@ -62,27 +62,27 @@ class InitBackendSeeder extends Seeder
                 'level' => 1, 'icon' => 'fa-envelope', 'route' => '#', 'sort' => 5,
             ],
             [
-                'name' => 'admin.users', 'display_name' => '用户管理', 'parent_id' => '2',
+                'name' => 'admin.users.index', 'display_name' => '用户管理', 'parent_id' => '2',
                 'level' => 2, 'icon' => '', 'route' => '/admin/users', 'sort' => 1,
             ],
             [
-                'name' => 'admin.permissions', 'display_name' => '权限管理', 'parent_id' => '2',
+                'name' => 'admin.permissions.index', 'display_name' => '权限管理', 'parent_id' => '2',
                 'level' => 2, 'icon' => '', 'route' => '/admin/permissions', 'sort' => 2,
             ],
             [
-                'name' => 'admin.roles', 'display_name' => '角色管理', 'parent_id' => '2',
+                'name' => 'admin.roles.index', 'display_name' => '角色管理', 'parent_id' => '2',
                 'level' => 2, 'icon' => '', 'route' => '/admin/roles', 'sort' => 3,
             ],
             [
-                'name' => 'admin.feedbacks', 'display_name' => '意见反馈', 'parent_id' => '3',
+                'name' => 'admin.feedbacks.index', 'display_name' => '意见反馈', 'parent_id' => '3',
                 'level' => 2, 'icon' => '', 'route' => '/admin/feedbacks', 'sort' => 1,
             ],
             [
-                'name' => 'admin.versions', 'display_name' => '版本管理', 'parent_id' => '3',
+                'name' => 'admin.versions.index', 'display_name' => '版本管理', 'parent_id' => '3',
                 'level' => 2, 'icon' => '', 'route' => '/admin/versions', 'sort' => 2,
             ],
             [
-                'name' => 'admin.systems', 'display_name' => '系统设置', 'parent_id' => '3',
+                'name' => 'admin.systems.index', 'display_name' => '系统设置', 'parent_id' => '3',
                 'level' => 2, 'icon' => '', 'route' => '/admin/systems', 'sort' => 3,
             ],
             [
@@ -90,11 +90,11 @@ class InitBackendSeeder extends Seeder
                 'level' => 2, 'icon' => '', 'route' => '/admin/statistics/index', 'sort' => 4,
             ],
             [
-                'name' => 'admin.document', 'display_name' => '文档管理', 'parent_id' => '3',
+                'name' => 'admin.document.index', 'display_name' => '文档管理', 'parent_id' => '3',
                 'level' => 2, 'icon' => '', 'route' => '/admin/document', 'sort' => 5,
             ],
             [
-                'name' => 'admin.pushes', 'display_name' => '推送管理', 'parent_id' => '3',
+                'name' => 'admin.pushes.index', 'display_name' => '推送管理', 'parent_id' => '3',
                 'level' => 2, 'icon' => '', 'route' => '/admin/pushes', 'sort' => 6,
             ],
             [
@@ -102,15 +102,15 @@ class InitBackendSeeder extends Seeder
                 'level' => 2, 'icon' => '', 'route' => '/admin/logs', 'sort' => 1,
             ],
             [
-                'name' => 'admin.actionLogs', 'display_name' => '后台日志管理', 'parent_id' => '4',
+                'name' => 'admin.actionLogs.index', 'display_name' => '后台日志管理', 'parent_id' => '4',
                 'level' => 2, 'icon' => '', 'route' => '/admin/actionLogs', 'sort' => 2,
             ],
             [
-                'name' => 'admin.selector', 'display_name' => '下拉枚举管理', 'parent_id' => '4',
+                'name' => 'admin.selector.index', 'display_name' => '下拉枚举管理', 'parent_id' => '4',
                 'level' => 2, 'icon' => '', 'route' => '/admin/selector', 'sort' => 3,
             ],
             [
-                'name' => 'admin.sendcloud', 'display_name' => 'SendCloud', 'parent_id' => '5',
+                'name' => 'admin.sendcloud.index', 'display_name' => 'SendCloud', 'parent_id' => '5',
                 'level' => 2, 'icon' => '', 'route' => '/admin/sendcloud', 'sort' => 1,
             ]
         );
