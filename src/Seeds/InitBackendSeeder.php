@@ -25,7 +25,7 @@ class InitBackendSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'bd',
             'email' => 'bd@loopeer.com',
-            'password' => Hash::make(config('quickcms.backend_password') ?: '111111'),
+            'password' => Hash::make(config('quickCms.backend_password') ?: '111111'),
             'status' => 1,
         ]);
 
