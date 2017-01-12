@@ -5,6 +5,7 @@ namespace Loopeer\QuickCms\Seeds;
 use DB;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Loopeer\QuickCms\Models\Selector;
 use Loopeer\QuickCms\Models\System;
 
 class InitBackendSeeder extends Seeder
@@ -39,6 +40,20 @@ class InitBackendSeeder extends Seeder
             'user_id' => 1,
             'role_id' => 1,
         ]);
+
+        Selector::create(array(
+            'name' => '上线下线状态',
+            'enum_key' => 'online_offline_status',
+            'enum_value' => '{"上线":"0","下线":"1"}',
+            'type' => 1,
+        ));
+
+        Selector::create(array(
+            'name' => '正常禁用状态',
+            'enum_key' => 'normal_disable_status',
+            'enum_value' => '{"正常":"0","禁用":"1"}',
+            'type' => 1,
+        ));
 
         $permissions = array(
             [
