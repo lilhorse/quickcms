@@ -44,14 +44,14 @@ class InitBackendSeeder extends Seeder
         Selector::create(array(
             'name' => '上线下线状态',
             'enum_key' => 'online_offline_status',
-            'enum_value' => '{"上线":"0","下线":"1"}',
+            'enum_value' => '{"0":"上线","1":"下线"}',
             'type' => 1,
         ));
 
         Selector::create(array(
             'name' => '正常禁用状态',
             'enum_key' => 'normal_disable_status',
-            'enum_value' => '{"正常":"0","禁用":"1"}',
+            'enum_value' => '{"0":"正常","1":"禁用"}',
             'type' => 1,
         ));
 
