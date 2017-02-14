@@ -68,14 +68,14 @@ class InitBackendSeeder extends Seeder
                 'name' => 'maintenance', 'display_name' => '运维管理', 'parent_id' => '0',
                 'level' => 1, 'icon' => 'fa-desktop', 'route' => '#', 'sort' => 3,
             ],
-            [
-                'name' => 'develop', 'display_name' => '开发工具', 'parent_id' => '0',
-                'level' => 1, 'icon' => 'fa-wrench', 'route' => '#', 'sort' => 4,
-            ],
-            [
-                'name' => 'email', 'display_name' => '邮件管理', 'parent_id' => '0',
-                'level' => 1, 'icon' => 'fa-envelope', 'route' => '#', 'sort' => 5,
-            ],
+//            [
+//                'name' => 'develop', 'display_name' => '开发工具', 'parent_id' => '0',
+//                'level' => 1, 'icon' => 'fa-wrench', 'route' => '#', 'sort' => 4,
+//            ],
+//            [
+//                'name' => 'email', 'display_name' => '邮件管理', 'parent_id' => '0',
+//                'level' => 1, 'icon' => 'fa-envelope', 'route' => '#', 'sort' => 5,
+//            ],
             [
                 'name' => 'admin.users.index', 'display_name' => '用户管理', 'parent_id' => '2',
                 'level' => 2, 'icon' => '', 'route' => '/admin/users', 'sort' => 1,
@@ -112,22 +112,22 @@ class InitBackendSeeder extends Seeder
                 'name' => 'admin.pushes.index', 'display_name' => '推送管理', 'parent_id' => '3',
                 'level' => 2, 'icon' => '', 'route' => '/admin/pushes', 'sort' => 6,
             ],
-            [
-                'name' => 'admin.logs', 'display_name' => '查看日志', 'parent_id' => '4',
-                'level' => 2, 'icon' => '', 'route' => '/admin/logs', 'sort' => 1,
-            ],
-            [
-                'name' => 'admin.actionLogs.index', 'display_name' => '后台日志管理', 'parent_id' => '4',
-                'level' => 2, 'icon' => '', 'route' => '/admin/actionLogs', 'sort' => 2,
-            ],
-            [
-                'name' => 'admin.selector.index', 'display_name' => '下拉枚举管理', 'parent_id' => '4',
-                'level' => 2, 'icon' => '', 'route' => '/admin/selector', 'sort' => 3,
-            ],
-            [
-                'name' => 'admin.sendcloud.index', 'display_name' => 'SendCloud', 'parent_id' => '5',
-                'level' => 2, 'icon' => '', 'route' => '/admin/sendcloud', 'sort' => 1,
-            ]
+//            [
+//                'name' => 'admin.logs', 'display_name' => '查看日志', 'parent_id' => '4',
+//                'level' => 2, 'icon' => '', 'route' => '/admin/logs', 'sort' => 1,
+//            ],
+//            [
+//                'name' => 'admin.actionLogs.index', 'display_name' => '后台日志管理', 'parent_id' => '4',
+//                'level' => 2, 'icon' => '', 'route' => '/admin/actionLogs', 'sort' => 2,
+//            ],
+//            [
+//                'name' => 'admin.selector.index', 'display_name' => '下拉枚举管理', 'parent_id' => '4',
+//                'level' => 2, 'icon' => '', 'route' => '/admin/selector', 'sort' => 3,
+//            ],
+//            [
+//                'name' => 'admin.sendcloud.index', 'display_name' => 'SendCloud', 'parent_id' => '5',
+//                'level' => 2, 'icon' => '', 'route' => '/admin/sendcloud', 'sort' => 1,
+//            ]
         );
         DB::table('permissions')->insert($permissions);
         $permission_role = array();
