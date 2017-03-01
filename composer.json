@@ -3,7 +3,12 @@
     "require": {
         "php": ">=5.5.9",
         "zizaco/entrust": "dev-laravel-5",
-        "kbwebs/multiauth": "~1.0"
+        "kbwebs/multiauth": "~1.0",
+        "qiniu/qiniu": "dev-master",
+        "loopeer/loopeer-log-viewer": "dev-master",
+        "loopeer/lib": "dev-master",
+        "stevenyangecho/laravel-u-editor": "~1.3",
+        "maatwebsite/excel": "~2.1.0"
     },
     "autoload": {
         "psr-4": {

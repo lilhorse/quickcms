@@ -1,11 +1,12 @@
 @extends('backend::layouts.master')
 @section('content')
-    @include('backend::layouts.message')
     <div id="content">
         <section id="widget-grid" class="">
             <div class="row">
                 <article class="col-sm-12 col-md-12 col-lg-6">
-                    <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
+                    @include('backend::layouts.message')
+                    <div class="jarviswidget" id="wid-id-4" data-widget-hidden="false" data-widget-togglebutton="false"
+                         data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-colorbutton="false">
                         <header>
                             <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
                             <h2>新增权限</h2>
@@ -59,6 +60,18 @@
                                                 <input type="text" name="description" placeholder="描述" value="{{$permission->description}}">
                                                 <b class="tooltip tooltip-bottom-right">权限描述</b> </label>
                                         </section>
+                                        @if(!isset($permission->id))
+                                        <section>
+                                            <div class="inline-group">
+                                                        <label class="radio">
+                                                            <input type="radio" name="operation_permission" checked="checked" value="Y">
+                                                            <i></i>默认操作功能数据</label>
+                                                        <label class="radio">
+                                                            <input type="radio" name="operation_permission" value="N">
+                                                            <i></i>无</label>
+                                                    </div> 
+                                        </section>
+                                        @endif
                                     </fieldset>
                                     <footer>
                                         <button type="submit" class="btn btn-primary">

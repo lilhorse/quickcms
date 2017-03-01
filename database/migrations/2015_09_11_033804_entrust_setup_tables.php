@@ -16,15 +16,16 @@ class EntrustSetupTables extends Migration
             $table->string('name', 50);
             $table->string('email', 50);
             $table->string('password', 100);
-            $table->string('remember_token');
+            $table->string('avatar', 100)->nullable();
+            $table->string('remember_token')->nullable();
             $table->tinyInteger('status')->default(1);
-            $table->timestamp('last_login');
+            $table->timestamp('last_login')->nullable();
             $table->timestamps();
         });
         // Create table for storing roles
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('name', 100)->unique();
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
@@ -35,10 +36,10 @@ class EntrustSetupTables extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('role_id')->unsigned();
 
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('role_id')->references('id')->on('roles')
-                ->onUpdate('cascade')->onDelete('cascade');
+//            $table->foreign('user_id')->references('id')->on('users')
+//                ->onUpdate('cascade')->onDelete('cascade');
+//            $table->foreign('role_id')->references('id')->on('roles')
+//                ->onUpdate('cascade')->onDelete('cascade');
 
             $table->primary(['user_id', 'role_id']);
         });
@@ -46,7 +47,7 @@ class EntrustSetupTables extends Migration
         // Create table for storing permissions
         Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('name', 100)->unique();
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
             $table->integer('parent_id');
@@ -54,6 +55,7 @@ class EntrustSetupTables extends Migration
             $table->string('icon', 50);
             $table->string('route', 200);
             $table->integer('sort');
+            $table->tinyInteger('type')->default(0);
             $table->timestamps();
         });
 
@@ -62,10 +64,10 @@ class EntrustSetupTables extends Migration
             $table->integer('permission_id')->unsigned();
             $table->integer('role_id')->unsigned();
 
-            $table->foreign('permission_id')->references('id')->on('permissions')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('role_id')->references('id')->on('roles')
-                ->onUpdate('cascade')->onDelete('cascade');
+//            $table->foreign('permission_id')->references('id')->on('permissions')
+//                ->onUpdate('cascade')->onDelete('cascade');
+//            $table->foreign('role_id')->references('id')->on('roles')
+//                ->onUpdate('cascade')->onDelete('cascade');
 
             $table->primary(['permission_id', 'role_id']);
         });

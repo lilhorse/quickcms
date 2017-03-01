@@ -24,28 +24,20 @@ class PermissionController extends BaseController {
 
     public function __construct(){
         $this->middleware('auth.permission:system');
-        $this->middleware('auth.permission:admin.permissions');
+        $this->middleware('auth.permission:admin.permissions.index');
+        parent::__construct();
     }
 
     public function search() {
-        $search = Input::get('search')['value'];
-        $order = Input::get('order')['0'];
-        $length = Input::get('length');
-        $select_column = ['ss_menus.id','ss_menus.name','ss_menus.display_name','ss_menus.route','ss_parents.display_name','ss_menus.sort','ss_menus.icon','ss_menus.description'];
+        $select_column = ['menus.id','menus.name','menus.display_name','menus.route','parents.display_name','menus.sort','menus.icon','menus.description'];
         $show_column = ['menu_id','menu_name','menu_display_name','menu_route','parent_display_name','menu_sort','menu_icon','menu_description'];
-        $order_sql = $show_column[$order['column']] . ' ' . $order['dir'];
-        $str_column = implode(',', $select_column);
-        self::setCurrentPage();
+        $tables = ['menus', 'parents'];
         $permissions = DB::table('permissions as menus')->leftJoin('permissions as parents','parents.id','=','menus.parent_id')
-        ->select('menus.id as menu_id','menus.name as menu_name','menus.display_name as menu_display_name','menus.route as menu_route',
-            'parents.display_name as parent_display_name','menus.sort as menu_sort','menus.icon as menu_icon','menus.description as menu_description')
-            ->whereRaw("concat_ws(" . $str_column . ") like '%" . $search . "%'")
-            ->orderByRaw($order_sql)
-            ->paginate($length);
-
-        $ret = self::queryPage($show_column, $permissions);
-        //Log::info($ret);
-        return Response::json($ret);
+            ->where('menus.type', 0)
+            ->select('menus.id as menu_id','menus.name as menu_name','menus.display_name as menu_display_name','menus.route as menu_route',
+                'parents.display_name as parent_display_name','menus.sort as menu_sort','menus.icon as menu_icon','menus.description as menu_description');
+        $ret = self::getMultiTableData($permissions, $select_column, $show_column, $tables);
+        return $ret;
     }
 
     public function index() {
@@ -63,13 +55,32 @@ class PermissionController extends BaseController {
 
     public function store() {
         $inputs = Input::all();
+        $operation_permission = Input::get('operation_permission');
         $permission_id = Input::get('permission_id',null);
+        if ($inputs['parent_id'] == 13) {
+            $inputs['parent_id'] = 0;
+        }
         $inputs['level'] = $inputs['parent_id'] == 0 ? 1 : 2;
         if(is_null($permission_id)){
+            array_except($inputs, array('operation_permission'));
             //创建
             $isset = Permission::where('name',$inputs['name'])->first();
             if(is_null($isset)){
-                Permission::create($inputs);
+                $permission = Permission::create($inputs);
+                if(isset($operation_permission) && $operation_permission == 'Y') {
+                    $operation = array('create' => '新增', 'edit' => '编辑', 'delete' => '删除', 'show' => '详情', 'changeStatus' => '状态变更');
+                    $permissions = [];
+                    foreach($operation as $operation_key => $operation_value) {
+                        $permissions[] = array(                                                       
+                            'name' => str_replace('.index', '', $permission->name) . '.' . $operation_key, 
+                            'display_name' => $operation_value,                            
+                            'route' => $permission->route . '/' . $operation_key, 
+                            'type' => 1,
+                            'parent_id' => $permission->id,
+                        );
+                    }
+                    DB::table('permissions')->insert($permissions);
+                }
                 $message = array('result' => true,'content' => '添加权限成功，重新登陆后即可更新左侧菜单栏');
                 return redirect('admin/permissions')->with('message', $message);
             }else{

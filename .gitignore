@@ -5,3 +5,6 @@ vendor
 .env.*.php
 .env.php
 .env
+.idea/
+*.swp
+.phpcomplete_extended/

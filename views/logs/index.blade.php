@@ -43,14 +43,23 @@
     $(document).ready(function() {
         var table = $('#dt_basic').DataTable({
             "processing": false,
+            "bStateSave": true,
             "serverSide": true,
+            "columns" : [
+                null,
+                { "orderable" : false },
+                { "orderable" : false },
+                { "orderable" : false },
+                { "orderable" : false },
+                { "orderable" : false },
+            ],
             "columnDefs": [ {
                 "targets": -1,
                 "data": null,
                 "defaultContent": '<button name="delete_log" class="btn btn-primary">删除</button>'
             } ],
             "ajax": {
-                "url": "/admin/logs/search"
+                "url": "/admin/actionLogs/search"
             }
         });
 
@@ -61,9 +70,9 @@
                 $.ajax({
                     type: "DELETE",
                     data: { '_token' : delete_token },
-                    url: '/admin/logs/' + data[0], //resource
-                    success: function(affectedRows) {
-                        if (affectedRows > 0)
+                    url: '/admin/actionLogs/' + data[0], //resource
+                    success: function(result) {
+                        if (result.result) {
                             var table = $('#dt_basic').dataTable();
                             var nRow = $($(this).data('id')).closest("tr").get(0);
                             table.fnDeleteRow( nRow, null, true );
@@ -72,6 +81,7 @@
                                     +'<i class="fa-fw fa fa-check"></i>'
                                     +'<strong>成功</strong>'+' '+result.content+'。'
                                     +'</div>');
+                        }
                     }
                 });
             }

@@ -1,0 +1,1 @@
+<script src="{{ asset('loopeer/quickcms/js/plugin/dropzone/dropzone.min.js') }}"></script>

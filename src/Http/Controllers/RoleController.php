@@ -26,7 +26,8 @@ class RoleController extends BaseController {
 
     public function __construct(){
         $this->middleware('auth.permission:system');
-        $this->middleware('auth.permission:admin.roles');
+        $this->middleware('auth.permission:admin.roles.index');
+        parent::__construct();
     }
 
     public function search(){
@@ -37,7 +38,6 @@ class RoleController extends BaseController {
     public function index() {
         $message = Session::get('message');
         $role_list = Role::get();
-        Log::info($role_list);
         return view('backend::roles.index', compact('message', 'role_list'));
     }
 
@@ -103,7 +103,7 @@ class RoleController extends BaseController {
         $role = Role::find($id);
         $perents = Permission::with('menus')->where('parent_id',0)->get();
         $permission_ids = PermissionRole::where('role_id',$role->id)->lists('permission_id')->all();
-        return view('backend::roles.permissions', compact('perents','role','permission_ids'));
+        return view('backend::roles.permission', compact('perents','role','permission_ids'));
     }
 
     public function savePermissions($id){
@@ -112,7 +112,7 @@ class RoleController extends BaseController {
         unset($inputs['_token']);
         $permission_ids = array_values($inputs);
         $role->perms()->sync($permission_ids);
-        $message = array('result' => true,'content'=>'分配权限成功，重新登陆后即可更新左侧菜单栏');
-        return $message;
+//        $message = array('result' => true,'content'=>'分配权限成功，重新登陆后即可更新左侧菜单栏');
+        return 1;
     }
 }

@@ -11,9 +11,11 @@
 namespace Loopeer\QuickCms\Http\Middleware;
 
 use Auth;
+use Carbon\Carbon;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Input;
+use Loopeer\QuickCms\Models\ActionLog;
 use Validator;
 use Loopeer\QuickCms\Models\User;
 
@@ -45,16 +47,20 @@ class AdminAuthenticate{
     {
         $email = Input::get('email');
         $password = Input::get('password');
-        $password = sha1($password.config('api.admin_pwd_salt'));
-        $admin = User::where('email',$email)->where('password',$password)->first();
-        if(is_null($admin)){
+        if (Auth::admin()->attempt(['email' => $email, 'password' => $password], true)) {
+            ActionLog::create(array(
+                'user_id' => Auth::admin()->get()->id,
+                'content' => config('quickCms.action_log.login'),
+                'client_ip' => $request->ip()
+            ));
+            User::where('email', $email)->update(['last_login' => Carbon::now()]);
+            //设置最后操作时间
+            $request->session()->put('LAST_ACTIVITY', Carbon::now());
+            // 认证通过...
+            return redirect('/admin/index');
+        } else {
             $message = array('result' => false,'content' => '邮箱或密码错误');
-            return redirect('/admin/login')->with('message',$message);
+            return redirect('/admin/login')->with('message', $message);
         }
-        if($admin->status == 0){
-            $message = array('result' => false,'content' => '此用户已被禁用');
-            return redirect('/admin/login')->with('message',$message);
-        }
-        return $next($request);
     }
 }
